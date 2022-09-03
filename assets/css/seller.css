@@ -1,0 +1,39 @@
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+  }
+  .card-registration .select-arrow {
+    top: 13px;
+  }
+section{
+    font-family: inter-regular;
+}
+h3{
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+input{
+    border-radius: 10px;
+    border: 2px solid lightslategrey;
+}
+label{
+    font-size: 15px;
+    margin-left: 8px;
+}
+#button{
+    font-size: 15px;
+    font-family: inter-regular;
+    height:150px;
+    width:250px;
+    border-radius: 15px;
+    margin-right: 155px;
+}
+
+
+
+
+
+ 

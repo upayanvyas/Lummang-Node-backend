@@ -1,0 +1,48 @@
+.footer-bottom{
+    padding-left: 258px;
+}
+#icon{
+margin-right: -720px;
+margin-top: -40px;
+}
+.copyright{
+    margin-top: -60px;
+   
+}
+#company{
+    margin-top: -30px;
+}
+#footerlogo{
+    margin-top: 20px;
+    height: 65px;
+    width: 155px;
+}
+#company1{
+    margin-top: 50px;
+    
+}
+#font{
+    font-family: inter-regular;
+    
+}
+#font1{
+    font-family: inter-regular;
+    
+    font-size: 15px;
+
+}
+#company2{
+   margin-left: 978px;
+   margin-top: -120px;
+    
+}
+.footer-bottom{
+    margin-top: 120px;
+}
+footer{
+    background-color: white;
+}
+.widget-about-desc{
+    width: 255px;
+    height: 5px;
+}

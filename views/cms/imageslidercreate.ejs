@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+    <head>
+
+        <%- include('../common/_head');-%>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+
+    </head>
+ 
+</html> 
+
+
+<body class="app sidebar-mini" style="font-family: inter-regular;">
+
+    <!-- GLOBAL-LOADER -->
+    <div id="global-loader">
+        <img src="/images/svgs/loader.svg" class="loader-img" alt="Loader">
+    </div>
+
+    <div class="page">
+        <div class="page-main">
+            <!-- HEADER -->
+           
+            <%- include('../common/_header');-%>
+            <!-- HEADER END -->
+
+            <!-- APP SIDEBAR -->
+
+            <%- include('../common/_leftsidebar');-%>
+            
+            <!-- APP SIDEBAR CLOSED -->
+
+            <!-- CONTAINER -->
+            <div class="app-content">
+                <div class="section">
+
+                   
+
+                    <!-- PAGE-HEADER -->
+                    <div class="page-header">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-1"></i> Masters</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create Imagesliders</li>
+                        </ol>
+                        <div class="ml-auto">
+                            <a href="/imagesliderview" class="btn btn-primary btn-icon btn-sm text-white mr-2">
+                                <span>
+                                    <i class="fe fe-plus"></i>
+                                </span> Imagesliders List
+                            </a>
+                        </div>
+                    </div>
+                    <!-- PAGE-HEADER END -->
+
+                   
+                   
+                   
+                    <!-- ROW-5 -->
+                    <div class="row">
+                        <div class="col-12 col-sm-12">
+                            <div class="card ">
+                                <div class="card-header">
+                                    <div class="card-title mb-0">Create Imagesliders</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+										<form action="/cms/postImageSliderCreate", method="post", enctype="multipart/form-data">
+										
+                                        <div class="form-group">
+                                            <label for="Category">Choose Image</label>
+                                            <input type="file" class="form-control"  name="image" >
+                                          </div>
+
+
+                                          <div class="form-group">
+                                            <label><h4>Category Name</h4></label>
+                                            
+                                            <select class="form-control"   name="categoryid" required  >
+                                                
+                                            <option >Choose..</option>
+                                            
+                                            <% category.forEach(function(data) { %>
+                                                <option value="<%= data._id %>"> <%= data.categoryname%> </option>
+                                                <% }) %>
+                                            </select>
+                                           
+                                           
+                                        </div> 
+                                          
+                                          <div class="form-group">
+                                            <label for="inputAlias">Caption</label>
+                                            <input type="text" class="form-control" id="inputAlias" name="caption" placeholder="Caption">
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="inputAlias">Title</label>
+                                            <input type="text" class="form-control" id="inputAlias" name="title" placeholder="Title">
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="inputAlias">SubTitle</label>
+                                            <input type="text" class="form-control" id="inputAlias" name="subtitle" placeholder="SubTitle">
+                                          </div>
+                                          
+                                          
+                                          
+                                            
+                                            
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            
+                                        </div>	</form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- COL END -->
+                    </div><!-- ROW-5 END -->
+                </div>
+                <!-- CONTAINER END -->
+            </div>
+        </div>
+
+    
+
+        <!-- FOOTER -->
+        <%- include('../common/_footer');-%>
+        <!-- FOOTER CLOSED -->
+    </div>
+
+    <!-- BACK-TO-TOP -->
+   
+
+
+</body>
+
+
+<!-- GLOBAL-LOADER -->
+		
+					<!-- APP SIDEBAR CLOSED -->
+                   
+                    <!-- CONTAINER -->
+                    
+             
+            

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+        <%- include('../common/_head');-%>
+    </head>
+    
+</html> 
+
+
+<body class="app sidebar-mini" style="font-family: inter-regular;">
+
+    <!-- GLOBAL-LOADER -->
+    <div id="global-loader">
+        <img src="/images/svgs/loader.svg" class="loader-img" alt="Loader">
+    </div>
+
+    <div class="page">
+        <div class="page-main">
+            <!-- HEADER -->
+           
+            <%- include('../common/_header');-%>
+            <!-- HEADER END -->
+
+            <!-- APP SIDEBAR -->
+
+            <%- include('../common/_leftsidebar');-%>
+            
+            <!-- APP SIDEBAR CLOSED -->
+
+            <!-- CONTAINER -->
+            <div class="app-content">
+                <div class="section">
+
+                   
+
+                    <!-- PAGE-HEADER -->
+                    <div class="page-header">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-1"></i> Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Show Topcategories </li>
+                        </ol>
+                        <div class="ml-auto">
+                            <a href="/createtopcategories" class="btn btn-primary btn-icon btn-sm text-white mr-2">
+                                <span>
+                                    <i class="fe fe-plus"></i>
+                                </span> Add Topcategories
+                            </a>
+                           
+                        </div>
+                    </div>
+                    <!-- PAGE-HEADER END -->
+
+                   
+                   
+                   
+                    <!-- ROW-5 -->
+                    <div class="row">
+                        <div class="col-12 col-sm-12">
+                            <div class="card ">
+                                <div class="card-header">
+                                    <div class="card-title mb-0">Top Categories Summary</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <% if(topcategories!=null) { %>
+                                        <table class="table table-bordered text-nowrap mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Category Name</th>
+                                                    <th>Image</th>
+                                                    <th>Description</th>
+                                                    
+                                                    
+                                                <th>Action</th>
+                                                    
+                                                    
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% topcategories.forEach(function(dat) { %>
+                                                <tr>
+                                                    <td><%= dat._id%></td>
+                                                    <td><%= dat.categoryid. categoryname %></td>
+                                                    <td> <img src="<%= dat. image %>" alt="" height="40px"></td>
+                                                    
+                                                        
+                                                       
+                                                        
+                                                       
+                                                    <td><%= dat.description%></td>
+                                                      
+                                            
+                                                    
+                                                   
+                                                   <td> 
+                                                    <a  class="confirm-delete badge badge-danger" href='/deletetopcategories/<%= dat._id%>'  type="submit" class="btn"><i class="fas fa-trash">Delete</i></a>
+                                                    <a class="badge badge-success" href='/getEditTopcategories/<%= dat._id%>' type="submit" class="btn"><i class="fas fa-edit">Edit</i></a>
+                    
+                                                   
+                                                        
+                                                        
+                                                    </td>
+                                                </tr>
+                                               
+                                                <% }) %>
+                                                </tbody>
+                                        </table>
+                                        <% } %>      
+           
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- COL END -->
+                    </div><!-- ROW-5 END -->
+                </div>
+                <!-- CONTAINER END -->
+            </div>
+        </div>
+
+    
+
+        <!-- FOOTER -->
+        <%- include('../common/_footer');-%>
+        <!-- FOOTER CLOSED -->
+    </div>
+
+    <!-- BACK-TO-TOP -->
+
+   
+    
+   
+
+</body>
+
+
+<!-- GLOBAL-LOADER -->
+		
+					<!-- APP SIDEBAR CLOSED -->
+                   
+                    <!-- CONTAINER -->
+                    
+             
+            

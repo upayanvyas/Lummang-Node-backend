@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+    <head>
+
+        <%- include('../common/_head');-%>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+
+    </head>
+
+</html> 
+
+
+<body class="app sidebar-mini" style="font-family: inter-regular;">
+
+    <!-- GLOBAL-LOADER -->
+    <div id="global-loader">
+        <img src="/images/svgs/loader.svg" class="loader-img" alt="Loader">
+    </div>
+
+    <div class="page">
+        <div class="page-main">
+            <!-- HEADER -->
+           
+            <%- include('../common/_header');-%>
+            <!-- HEADER END -->
+
+            <!-- APP SIDEBAR -->
+
+            <%- include('../common/_leftsidebar');-%>
+            
+            <!-- APP SIDEBAR CLOSED -->
+
+            <!-- CONTAINER -->
+            <div class="app-content">
+                <div class="section">
+
+                   
+
+                    <!-- PAGE-HEADER -->
+                    <div class="page-header">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-1"></i> Masters</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create Filter Setting</li>
+                        </ol>
+                        <div class="ml-auto">
+                            <a href="/FiltersettingView" class="btn btn-primary btn-icon btn-sm text-white mr-2">
+                                <span>
+                                    <i class="fe fe-plus"></i>
+                                </span> FilterSetting List
+                            </a>
+                        </div>
+                    </div>
+                    <!-- PAGE-HEADER END -->
+
+                   
+                   
+                   
+                    <!-- ROW-5 -->
+                    <div class="row">
+                        <div class="col-12 col-sm-12">
+                            <div class="card ">
+                                <div class="card-header">
+                                    <div class="card-title mb-0">Create FilterListing</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+										<form method="post" action="/createfiltersetting"
+										>
+                                    
+                                        <div class="form-group">
+                                            <label><h4>Category Name</h4></label>
+                                            
+                                            <select class="form-control"   name="category_id" required  >
+                                                
+                                            <option >Choose..</option>
+                                            
+                                            <% categories.forEach(function(dat) { %>
+                                                <option value="<%= dat._id %>"> <%= dat.categoryname%> </option>
+                                                <% }) %>
+                                            </select>
+                                           
+                                           
+                                        </div> 
+                                         
+                                        <div class="form-group">
+                                            <label><h4>Filter</h4></label>
+                                            
+                                            <select class="form-control" id="filter_id"  name="filter_id" required  >
+                                                
+                                            <option >Choose..</option>
+                                            <% filters.forEach(function(dat) { %>
+                                            <option value="<%= dat._id %>"> <%= dat.filterName%> </option>
+                                            <% }) %>
+                                            </select>
+                                           
+                                           
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label><h4>Filter Value</h4></label>
+                                            
+                                            <select class="form-control" id="filtervalues" name="filtervalues" required  >
+                                                <option >Choose..</option>
+                                            </select>
+                                           
+                                           
+                                        </div> 
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            
+                                        </div>	</form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- COL END -->
+                    </div><!-- ROW-5 END -->
+                </div>
+                <!-- CONTAINER END -->
+            </div>
+        </div>
+
+    
+
+        <!-- FOOTER -->
+        <%- include('../common/_footer');-%>
+        <!-- FOOTER CLOSED -->
+    </div>
+
+    <!-- BACK-TO-TOP -->
+   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+
+
+</body>
+
+<script>
+    
+function GetFilterValues(){
+     var filter_id = $('#filter_id').val();
+     var filterString = "";
+     $('#filtervalues').find('option').remove();
+        $.ajax({
+            type:'GET',
+            url: '/api/Filter/getFilterValueByFilterId/'+ filter_id,
+            success:function(result){
+                if(result.StatusCode == 200)
+                {
+                    
+                    for(var i=0;i<result.data.filtervalues.length;i++)
+                    {
+                        $('#filtervalues').append('<option value="'+result.data.filtervalues[i]._id+'">'+result.data.filtervalues[i].filtervalue+'</option>');
+                    }
+                }
+            }
+        });
+}
+$('#filter_id').change(function(){
+ GetFilterValues();
+ });
+
+</script>
+            

@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+	<head>
+
+		<!-- Meta data -->
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta content="Slica – Bootstrap Responsive Flat Admin Dashboard HTML5 Template" name="description">
+		<meta content="Spruko Technologies Private Limited" name="author">
+		<meta name="keywords" content="admin site template, html admin template,responsive admin template, admin panel template, bootstrap admin panel template, admin template, admin panel template, bootstrap simple admin template premium, simple bootstrap admin template, best bootstrap admin template, simple bootstrap admin template, admin panel template,responsive admin template, bootstrap simple admin template premium"/>
+
+		<!--favicon -->
+		<link rel="icon" href="../../assets/images/lummang.png" type="image/x-icon"/>
+
+		<!-- TITLE -->
+		<title>Lummang</title>
+
+		<!-- DASHBOARD CSS -->
+		<link href="../../assets/css/style.css" rel="stylesheet"/>
+		<link href="../../assets/css/color-skins/color1.css" rel="stylesheet"/>
+		<link href="../../assets/css/skins-modes.css" rel="stylesheet"/>
+		<link rel="stylesheet" href="../assets/css/login.css">
+		<link rel="stylesheet" href="../assets/css/header.css">
+
+
+
+		<!-- SINGLE-PAGE CSS -->
+		<link href="../../assets/plugins/single-page/css/single-page.css" rel="stylesheet" type="text/css">
+
+		<!--- FONT-ICONS CSS -->
+		<link href="../../assets/css/icons.css" rel="stylesheet"/>
+
+	</head>
+
+	<body class="bg-white" style="font-family: inter-regular;">
+<div class="app">
+		<!-- BACKGROUND-IMAGE -->
+		<div class="login-img">
+
+			<!-- GLOABAL LOADER -->
+			<div id="global-loader">
+				<img src="../../assets/images/svgs/loader.svg" class="loader-img" alt="Loader">
+			</div>
+			
+			<div class="page h-100">
+				<div class="">
+				    <!-- CONTAINER OPEN -->
+					<div class="col col-login mx-auto">
+						<div class="text-center">
+							<img src="../../assets/images/lummang.png" width="138px" height="67px" id="img" alt="">
+						</div>
+					</div>
+
+					<% if(error !=''){%>
+						<div class="alert alert-warning alert-dismissible fade show" role="alert" id="error">
+							<strong>Sorry!</strong> <%= error %>
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+						  </div>
+						  <% } %>
+					<div class="container-login100">
+						<div class="wrap-login100 p-6">
+							<form class="login100-form validate-form" method="post" action="/login" onsubmit="return myfun()"  autocomplete="off"  >
+								<span class="login100-form-title">
+									Member Login
+								</span>
+								<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+									<input class="input100" type="text" name="email" id="email"
+									value="" placeholder="Email">
+									<span class="focus-input100"></span>
+									<span class="symbol-input100">
+										<i class="zmdi zmdi-email" aria-hidden="true"></i>
+									</span>
+									<span id="messages" style="color: red;"></span> 
+								</div>
+								<div class="wrap-input100 validate-input" data-validate = "Password is required">
+									<input class="input100" type="password" name="password" placeholder="Password" id="password" value="">
+									<span class="focus-input100"></span>
+									<span class="symbol-input100">
+										<i class="zmdi zmdi-lock" aria-hidden="true"></i>
+									</span>
+									<span id="messagesss" style="color: red;"></span> 
+								</div>
+								<div class="text-right pt-1">
+									<p class="mb-0"><a href="forgot-password.html" class="text-primary ml-1">Forgot Password?</a></p>
+								</div>
+								<button type="submit" class="login100-form-btn btn-primary" value="submit">
+									login
+								</button>
+								<div class="text-center pt-3">
+									<p class="text-dark mb-0">Not A Member?<a href="register" class="text-primary ml-1">Sign UP Now</a></p>
+								</div>
+								<div class=" flex-c-m text-center mt-3">
+								    <p>Or</p>
+									<div class="social-icons">
+										<ul>
+											<li><a class="btn  btn-social btn-block"><i class="fa fa-google-plus text-google-plus"></i> Sign Up With Google</a></li>
+											<li><a class="btn  btn-social btn-block mt-2"><i class="fa fa-facebook text-facebook"></i> Sign In With Facebook</a></li>
+										</ul>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!-- CONTAINER CLOSED -->
+				</div>
+			</div>
+		</div>
+		<!-- BACKGROUND-IMAGE CLOSED -->
+		<script>
+			function myfun(){
+
+				var b=document.getElementById("email").value;
+		
+		if (b==""){
+			document.getElementById("messages").innerHTML="** Please fill valid email";
+			return false;
+		}
+		else{
+			document.getElementById("messages").innerHTML="";
+			
+		}
+		if (b.indexOf('@')<= 0){
+			document.getElementById("messages").innerHTML="** @ Invalid position";
+			return false;
+		}
+		else{
+			document.getElementById("messages").innerHTML="";
+		}
+		var d=document.getElementById("password").value;	
+			if (d==""){
+			document.getElementById("messagesss").innerHTML="** Please fill valid password";
+			return false;
+		}
+		else{
+			document.getElementById("messagesss").innerHTML="";
+			
+		}
+
+		if(d.length<6){
+			document.getElementById("messagesss").innerHTML="**Password must be 6 digit";
+			return false;
+		}
+		else{
+			document.getElementById("messagesss").innerHTML="";
+			
+		}
+
+
+		if(d.length>6){
+			document.getElementById("messagesss").innerHTML="**Password must be 6 digit";
+			return false;
+		}
+		else{
+			document.getElementById("messagesss").innerHTML="";
+			
+		}
+
+		}
+
+
+		
+</script>
+			
+
+		<!-- JQUERY SCRIPTS JS-->
+		<script src="../../assets/js/vendors/jquery-3.2.1.min.js"></script>
+
+		<!-- BOOTSTRAP SCRIPTS JS-->
+		<script src="../../assets/js/vendors/bootstrap.bundle.min.js"></script>
+
+		<!-- SPARKLINE JS-->
+		<script src="../../assets/js/vendors/jquery.sparkline.min.js"></script>
+
+		<!-- CHART-CIRCLE JS-->
+		<script src="../../assets/js/vendors/circle-progress.min.js"></script>
+
+		<!-- RATING STAR JS-->
+		<script src="../../assets/plugins/rating/rating-stars.js"></script>
+
+		<!-- INPUT MASK JS-->
+		<script src="../../assets/plugins/input-mask/input-mask.min.js"></script>
+
+		<!-- CUSTOM JS-->
+		<script src="../../assets/js/custom.js"></script>
+	</div>
+
+	</body>
+</html>

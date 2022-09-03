@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+    <head>
+
+        <%- include('../common/_head');-%>
+		
+    </head>
+
+</html> 
+
+
+<body class="app sidebar-mini" style="font-family: inter-regular;">
+
+    <!-- GLOBAL-LOADER -->
+    <div id="global-loader">
+        <img src="/images/svgs/loader.svg" class="loader-img" alt="Loader">
+    </div>
+
+    <div class="page">
+        <div class="page-main">
+            <!-- HEADER -->
+           
+            <%- include('../common/_header');-%>
+            <!-- HEADER END -->
+
+            <!-- APP SIDEBAR -->
+
+            <%- include('../common/_leftsidebar');-%>
+            
+            <!-- APP SIDEBAR CLOSED -->
+
+            <!-- CONTAINER -->
+            <div class="app-content">
+                <div class="section">
+
+                   
+
+                    <!-- PAGE-HEADER -->
+                    <div class="page-header">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fe fe-home mr-1"></i> Masters</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit bestseller</li>
+                        </ol>
+                        <div class="ml-auto">
+                            <a href="/bestsellerview" class="btn btn-primary btn-icon btn-sm text-white mr-2">
+                                <span>
+                                    <i class="fe fe-plus"></i>
+                                </span>Show bestseller
+                            </a>
+                        </div>
+                    </div> 
+                    <!-- PAGE-HEADER END -->
+
+                   
+                   
+                   
+                    <!-- ROW-5 -->
+                    <div class="row">
+                        <div class="col-12 col-sm-12">
+                            <div class="card ">
+                                <div class="card-header">
+                                    <div class="card-title mb-0">Edit Bestseller</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+										<form method="post",  action="/updatebestseller" >
+										
+                                       
+                                            
+                                            
+                                            
+                                          <div class="form-group">
+                                            
+                                            <input type="text" class="form-control" id="inputAlias" name="bestsellerid" value="<%= bestseller._id %>" placeholder="bestseller id">
+                                           
+                                          </div>
+                                          
+                                          <div class="form-group">
+                                                <label><h5>Item</h5></label>
+                                                
+                                                <select class="form-control"   name="itemid" required  >
+                                                
+                                                    <option><%= bestseller.itemid.itemname %> </option>
+                                                <option >Choose..</option>
+                                                
+                                                <% item.forEach(function(data) { %>
+                                                    <option value="<%= data._id %>"> <%= data.itemname
+                                                        %> </option>
+                                                    <% }) %>
+                                                </select>
+                                               
+                                               
+                                            </div>  
+                                          
+                                            
+                                            
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            
+                                        </div>	</form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- COL END -->
+                    </div><!-- ROW-5 END -->
+                </div>
+                <!-- CONTAINER END -->
+            </div>
+        </div>
+
+    
+
+        <!-- FOOTER -->
+        <%- include('../common/_footer');-%>
+        <!-- FOOTER CLOSED -->
+    </div>
+
+    <!-- BACK-TO-TOP -->
+   
+
+
+</body>
+
+
+<!-- GLOBAL-LOADER -->
+		
+					<!-- APP SIDEBAR CLOSED -->
+                   
+                    <!-- CONTAINER -->
+                    
+             
+            
