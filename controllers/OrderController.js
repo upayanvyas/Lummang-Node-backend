@@ -24,11 +24,46 @@ module.exports.verifyOrderPayment = (req, res) => {
   }
 };
 
-module.exports.getMyOrders = (req, res) => {
+module.exports.getBuyerOrders = (req, res) => {
   let id = req.params.id;
   let status = req.params.status;
+  console.log('id-status: ',id,status)
+
+  let query = {customerid: id}
+
+  if (status != 'all'){
+    query['orderstatus'] = status
+  }
+  console.log(query)
+
   orderModel
-    .find({ customerid: id })
+    .find(query)
+    .then((response) => {
+      res.status(200).json({
+        status: "SUCCESS",
+        data: response,
+      });
+    })
+    .catch((err) => {
+      console.log("err: ", err);
+    });
+};
+
+
+module.exports.getSellerOrders = (req, res) => {
+  let id = req.params.id;
+  let status = req.params.status;
+  console.log('id-status: ',id,status)
+
+  let query = {sellerid: id}
+
+  if (status != 'all'){
+    query['orderstatus'] = status
+  }
+  console.log(query)
+
+  orderModel
+    .find(query)
     .then((response) => {
       res.status(200).json({
         status: "SUCCESS",

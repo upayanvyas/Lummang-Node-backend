@@ -5,7 +5,8 @@ const router = express.Router();
 const OrderController = require('../controllers/OrderController');
 
 router.post('/api/order/verifyOrderPayment', OrderController.verifyOrderPayment);
-router.get('/api/order/getMyOrders/:id/:status', OrderController.getMyOrders)
+router.get('/api/order/getBuyerOrders/:id/:status', OrderController.getBuyerOrders)
+router.get('/api/order/getSellerOrders/:id/:status', OrderController.getSellerOrders)
 
 router.post('/api/order/placeorder',OrderController.postPlaceOrder);
 // router.get('/api/order/user/getmyorders/:sellerid', OrderController.getUserMyOrdersbusellerid);
