@@ -1,7 +1,7 @@
 const orderModel = require("../models/Order.Model");
 const DeliveryPartyModal = require("../models/DeliveryParty.Model");
 const cartModel = require("../models/Cart.Model");
-var crypto = require('crypto');
+var crypto = require("crypto");
 
 // verify order payment if successfull
 module.exports.verifyOrderPayment = (req, res) => {
@@ -22,6 +22,22 @@ module.exports.verifyOrderPayment = (req, res) => {
   } else {
     res.json({ success: false, message: "Payment verification failed" });
   }
+};
+
+module.exports.getMyOrders = (req, res) => {
+  let id = req.params.id;
+  let status = req.params.status;
+  orderModel
+    .find({ customerid: id })
+    .then((response) => {
+      res.status(200).json({
+        status: "SUCCESS",
+        data: response,
+      });
+    })
+    .catch((err) => {
+      console.log("err: ", err);
+    });
 };
 
 //for order place

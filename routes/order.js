@@ -5,9 +5,10 @@ const router = express.Router();
 const OrderController = require('../controllers/OrderController');
 
 router.post('/api/order/verifyOrderPayment', OrderController.verifyOrderPayment);
+router.get('/api/order/getMyOrders/:id/:status', OrderController.getMyOrders)
 
 router.post('/api/order/placeorder',OrderController.postPlaceOrder);
-router.get('/api/order/user/getmyorders/:sellerid', OrderController.getUserMyOrdersbusellerid);
+// router.get('/api/order/user/getmyorders/:sellerid', OrderController.getUserMyOrdersbusellerid);
 router.get('/api/order/user/getmyorder/:buyerid', OrderController.getOrdersbybuyerid);
 router.get('/order/manageorder',OrderController.getManageOrder);
 router.get('/api/order/getordersby_id/:orderid', OrderController.getOrderDetailsBy_Id);
@@ -25,7 +26,7 @@ router.get('/api/order/gettopickuporderlistbydeliverypartyid/:deliveryparty', Or
 router.get('/order/printpackingslipandinvoice/:orderno', OrderController.printPackingslipAndInvoice);
 router.get('/cartdetail/:customerid', OrderController.getcartbyuserid);
 
-router.get('/getallorder', OrderController.getalloredr);
+// router.get('/getallorder', OrderController.getalloredr);
 
 
 
