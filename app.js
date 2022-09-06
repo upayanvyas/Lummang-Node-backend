@@ -9,6 +9,8 @@ app.use(express.static('assets'));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
+require('dotenv').config({ path: './.env' })
+
 
 
 const port =process.env.PORT || 4000;
