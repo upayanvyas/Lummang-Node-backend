@@ -70,7 +70,21 @@ module.exports.getSellerOrders = (req, res) => {
 };
 
 module.exports.trackOrderFromIthink = (req, res) => {
-  console.log(req)
+  console.log(req);
+};
+
+module.exports.getAllOrders = (req, res) => {
+  orderModel
+    .find()
+    .all()
+    .then((result) => {
+      // console.log("res: ", result);
+      res.status(200).json({
+        status: "SUCCESS",
+        data: result,
+      });
+    })
+    .catch((err) => console.log("err : ", err));
 };
 
 //for order place

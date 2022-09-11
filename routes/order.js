@@ -8,6 +8,7 @@ router.post('/api/order/verifyOrderPayment', OrderController.verifyOrderPayment)
 router.get('/api/order/getBuyerOrders/:id/:status', OrderController.getBuyerOrders)
 router.get('/api/order/getSellerOrders/:id/:status', OrderController.getSellerOrders)
 router.get('/api/order/trackOrder/:id', OrderController.trackOrderFromIthink)
+router.get('/api/order/all', OrderController.getAllOrders)
 
 
 router.post('/api/order/placeorder',OrderController.postPlaceOrder);
