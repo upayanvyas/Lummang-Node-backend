@@ -9,6 +9,10 @@ router.get('/api/order/getBuyerOrders/:id/:status', OrderController.getBuyerOrde
 router.get('/api/order/getSellerOrders/:id/:status', OrderController.getSellerOrders)
 router.get('/api/order/trackOrder/:id', OrderController.trackOrderFromIthink)
 router.get('/api/order/all', OrderController.getAllOrders)
+router.get('/api/order/seller/:id/:start_dt/:end_dt', OrderController.searchOrderBySellerId)
+router.get('/api/order/customer/:id/:start_dt/:end_dt', OrderController.searchOrderByCustomerId)
+router.get('/api/order/customers', OrderController.getAllCustomers)
+router.get('/api/order/sellers', OrderController.getAllSellers)
 
 
 router.post('/api/order/placeorder',OrderController.postPlaceOrder);

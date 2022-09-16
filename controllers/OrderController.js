@@ -1,4 +1,5 @@
 const orderModel = require("../models/Order.Model");
+const customerModel = require("../models/Customers.Model");
 const DeliveryPartyModal = require("../models/DeliveryParty.Model");
 const cartModel = require("../models/Cart.Model");
 var crypto = require("crypto");
@@ -78,14 +79,109 @@ module.exports.getAllOrders = (req, res) => {
     .find()
     .all()
     .then((result) => {
-      // console.log("res: ", result);
-      res.status(200).json({
-        status: "SUCCESS",
-        data: result,
-      });
+      // console.log(result);
+      customerModel
+        .find()
+        .all()
+        .then((customers) => {
+          // console.log(customers);
+          // shopownername
+          // usertype
+          for (const i in result) {
+            // console.log(result[i]._id.toString())
+            for (const j in customers) {
+              // console.log(typeof(customers[j]._id.toString()));
+
+              if (result[i].customerid === customers[j]._id.toString()) {
+                result[i]["customer_name"] = customers[j].shopownername;
+                result[i]["user_type"] = customers[j].usertype;
+              }
+
+              if (result[i].sellerid === customers[j]._id.toString()) {
+                result[i]["seller_name"] = customers[j].shopownername;
+                result[i]["user_type"] = customers[j].usertype;
+              }
+            }
+          }
+          // console.log("final results: ", result);
+          res.status(200).json({
+            status: "SUCCESS",
+            data: result,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     })
     .catch((err) => console.log("err : ", err));
 };
+
+module.exports.getAllCustomers = (req, res) => {
+  customerModel
+    .find({ usertype: "buyer" })
+    .then((result) => {
+      // console.log(result);
+      res.status(200).json({
+        msg: "success",
+        data: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+module.exports.getAllSellers = (req, res) => {
+  customerModel
+    .find({ usertype: "seller" })
+    .then((result) => {
+      // console.log(result);
+      res.status(200).json({
+        msg: "success",
+        data: result,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+module.exports.searchOrderByCustomerId = (req, res) => {
+  const customerid = req.params.id;
+  let start_dt = req.params.start_dt;
+  let end_dt = req.params.end_dt;
+  console.log(customerid);
+  console.log(start_dt);
+  console.log(end_dt);
+
+  // console.log(new Date(start_dt).toUTCString());
+  // console.log(new Date(end_dt));
+
+  orderModel.find({ customerid: customerid }).then((result) => {
+    res.status(200).json({
+      status: "success",
+      data: result,
+    });
+  });
+};
+
+module.exports.searchOrderBySellerId = (req, res) => {
+  const sellerid = req.params.id;
+  let start_dt = req.params.start_dt;
+  let end_dt = req.params.end_dt;
+  console.log(sellerid);
+  console.log(start_dt);
+  console.log(end_dt);
+
+  orderModel.find({ sellerid: sellerid }).then((result) => {
+    res.status(200).json({
+      status: "success",
+      data: result,
+    });
+  });
+};
+
+// module.exports.getOrderBy
 
 //for order place
 module.exports.postPlaceOrder = (req, res, next) => {
